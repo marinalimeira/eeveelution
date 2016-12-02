@@ -1,40 +1,29 @@
 import { createStore } from 'redux'
 
-class Pokemon {
-  constructor(specie) {
-    this._specie = specie;
-    this._level = 1;
-  }
-
-  setSpecie(specie) {
-    this._specie = specie;
-    return this;
-  }
-
-  updateLevel() {
-    this._level += 1;
-    return this;
-  }
+const Pokemon = {
+  init: (specie) => ({ level: 1, specie }),
+  setSpecie: (prev, specie) => ({ ...prev, specie }),
+  updateLevel: (prev) => ({ ...prev, level: prev.level + 1}) 
 }
 
-const eeveelution = (state = new Pokemon('Eevee'), action) => {
+const eevee = Pokemon.init('Eevee');
+
+const eeveelution = (state = eevee, action) => {
   switch (action.type){
     case 'WATER_STONE':
-      return state.setSpecie('Vaporeon');
+      return Pokemon.setSpecie(state, 'Vaporeon');
     case 'THUNDER_STONE':
-      return state.setSpecie('Jolteon');
+      return Pokemon.setSpecie(state, 'Jolteon');
     case 'FIRE_STONE':
-      return state.setSpecie('Flareon');
+      return Pokemon.setSpecie(state, 'Flareon');
     case 'LEVEL_UP':
-      return state.updateLevel();
+      return Pokemon.updateLevel(state);
     default:
       return state;
   }
 }
 
-const eevee = new Pokemon('Eevee');
-
-const store = createStore(eeveelution, eevee);
+const store = createStore(eeveelution);
 
 store.subscribe(() => console.log(store.getState()));
 
@@ -46,4 +35,3 @@ store.dispatch({ type: 'THUNDER_STONE' });
 store.dispatch({ type: 'WATER_STONE' });
 
 console.log(eevee);
-
