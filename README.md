@@ -2,7 +2,7 @@
 
 Redux DEMO from my talk about Funcional JS at [Front in Acaraju](http://frontinaracaju.com.br/).
 
-[Slides here {pt-BR}](localhost/talk-funcional-js/#).
+[Slides here {pt-BR}](http://marinalimeira.github.io/talk-funcional-js).
 
 ## Redux
 
