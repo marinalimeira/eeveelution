@@ -6,3 +6,12 @@ const Pokemon = {
   updateLevel: (prev) => ({ specie: prev.specie, level: prev.level + 1}) 
 }
 
+// init eevee
+
+// create reducer 'eeveelution'
+
+// create store
+
+// subscribe store
+
+// dispatch action
